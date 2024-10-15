@@ -85,3 +85,12 @@ fabric.properties
 *.iml
 out
 gen
+!/D5437611-X02 (WING GEAR).pdf
+
+output_images/page_1.png
+
+output_images/page_2.png
+
+output_images/page_3.png
+
+__pycache__/
