@@ -13,7 +13,7 @@ def detect_edges(image_file):
     #kernel = np.ones((3, 3), np.uint8)
     #edges = cv2.dilate(edges, kernel, iterations=1)
 
-    lines = cv2.HoughLines(edges, 1, np.pi / 180, 250)
+    lines = cv2.HoughLines(edges, 1, np.pi / 180, 400)
 
     cv2.imshow('Grayscale', gray)
     cv2.imshow('Edges', edges)
@@ -76,3 +76,24 @@ def detect_edges(image_file):
     cv2.destroyAllWindows()
 
         # ... (analyze contour_edges for specific patterns, e.g., perpendicular lines) ...
+
+def show_edge_contour(image_file):
+    # Load the image
+    img = cv2.imread(image_file)
+    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+
+    # Edge detection
+    edges = cv2.Canny(gray, 50, 150)
+    # Find contours
+    contours, hierarchy = cv2.findContours(edges, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+    cv2.imshow('Grayscale', gray)
+    cv2.imshow('Edges', edges)
+
+    # Draw all contours
+    img_contours = img.copy()
+    cv2.drawContours(img_contours, contours, -1, (0, 0, 255), 2)
+    cv2.imshow('Contours', img_contours)
+
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
+
