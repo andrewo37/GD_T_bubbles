@@ -26,7 +26,7 @@ def pdf_to_png(pdf_path, output_folder):
             # Create pixmap from greyscale image (use original pixmap dimensions)
             grey_pixmap = fitz.Pixmap(fitz.csGRAY, pixmap.width, pixmap.height, grey_img.tobytes(), 0)
 
-            output_path = f"{output_folder}/page_{page_number + 1}.png"
+            output_path = f"{output_folder}/{pdf_path}_{page_number + 1}.png"
             grey_pixmap.save(output_path)
 
 # Example usage:
